@@ -146,11 +146,18 @@ function fiveDayForecast(lat, long) {
     for (var i = 1; i < 6; i++) {
       var forecastCard = $("#card" + i);
       var dayForecast = response.daily[i].weather[0].main;
+      var dayTemp = response.daily[i].temp.day;
+      //convert temp
+      var dayCelsius = dayTemp - 273;
+     // Calculating Fahrenheit temperature to the nearest integer
+      var dayFahrenheit = Math.floor(dayCelsius * (9 / 5) + 32);
+      var cTemp = $("<p>").text("Temperature: " + dayFahrenheit + " F");
       var dayOfWeek = moment().add(i, "days").format("dddd");
       var dateText = $("<p>").text(dayOfWeek);
       var forecastText = $("<p>").text("Forecast " + dayForecast);
       forecastCard.empty();
       forecastCard.append(dateText);
+      forecastCard.append(cTemp);
       forecastCard.append(forecastText).addClass("card");
     }
   });
