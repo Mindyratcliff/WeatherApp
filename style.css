@@ -17,3 +17,8 @@ section{
 
     
 }
+
+.card {
+    background-color: blue;
+    color: white;
+}
