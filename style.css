@@ -5,6 +5,13 @@ h1 {
     
 }
 
+h2 {
+    text-align: center;
+    color: white;
+    background-color: darkslategray;
+    
+}
+
 section{
     background-color: rgba(211, 211, 211, 0.589);
     border: 2px black;
