@@ -1,5 +1,5 @@
 //Initial list of cities
-var cities = [30301, 73301, 60601, 43081, 80012, 10001, 32801, 94102, 98101];
+var cities = [30301, 73301, 60601, 43210, 80220, 10001, 32801, 94102, 98101];
 
 var cityNames = [
   "Atlanta",
@@ -36,18 +36,16 @@ function renderButtons() {
     buttons.text(cityNames[i]);
     // Adding the button to the buttons-view div
     $("#buttons-view").append(buttons);
+    
   }
 }
 //Call render buttons to display the set city buttons
 renderButtons();
 
-// Adding a click event listener to all elements with a class of "city-btn"
-$(document).on("click", ".city-btn", citySearch);
-
 //Create a function to searach based on zip code to retrieve current weather data
 
-function citySearch() {
-  var zip = $(this).attr("data-name");
+function citySearch(zip) {
+  
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?zip=" +
     zip +
@@ -158,6 +156,19 @@ function fiveDayForecast(lat, long) {
   });
 }
 
-//Add event listener for the search button to display the searched city
+// Adding a click event listener to all elements with a class of "city-btn"
+$(document).on("click", ".city-btn", function(event){
+  for (var i = 0; i <cities.length; i++){
+    var eachZip = $(this).attr("data-name");
+  }
+  citySearch(eachZip)
+});
 
-var searchButton = $("#searchButton").on("click", citySearch);
+//Add event listener for the search button to display the searched city
+var searchButton = $("#searchButton").on("click", function(event) {
+  event.preventDefault();
+  // This line grabs the input from the textbox
+  var city = $(".form-control").val().trim()
+  //Call the city search function
+  citySearch(city);
+});
