@@ -112,25 +112,7 @@ function citySearch (){
            //Call the uvIndex function to display on page.
 
            uvIndex(lat,long);
-
-           function fiveDayForecast () {
-
-            var fiveDayURL ="http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + "&appid=af365a15708e5fc672bcd55e78617a9f";
-          
-            $.ajax({
-          
-              url: fiveDayURL,
-              method: "GET"
-            }).then(function(response){
-          
-              var forecastCards = $(".card");
-          
-              console.log(response);
-          
-            })
-          }
-
-          fiveDayForecast();
+           fiveDayForecast(lat, long);
 
        })
 
@@ -164,11 +146,11 @@ function uvIndex (lat, long) {
 
 
   })
-}
+};
 
-function fiveDayForecast () {
+function fiveDayForecast (lat, long) {
 
-  var fiveDayURL ="http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + "&appid=af365a15708e5fc672bcd55e78617a9f";
+  var fiveDayURL ="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=af365a15708e5fc672bcd55e78617a9f";;
 
   $.ajax({
 
@@ -176,12 +158,32 @@ function fiveDayForecast () {
     method: "GET"
   }).then(function(response){
 
-    var forecastCards = $(".card");
+    var forecastCard1 = $("#card1");
+    var forecastCard2 = $("#card2");
+    var forecastCard3 = $("#card3");
+    var forecastCard4 = $("#card4");
+    var forecastCard5 = $("#card5");
 
-    console.log(response);
+    var dayOneForecast = response.daily[1].weather[0].main;
+    var dayTwoForecast = response.daily[2].weather[0].main;
+    var dayThreeForecast = response.daily[3].weather[0].main;
+    var dayFourForecast = response.daily[4].weather[0].main;
+    var dayFiveForecast = response.daily[5].weather[0].main;
+
+    var dayOne =$("<p>").text("Forecast " + dayOneForecast);
+    var dayTwo =$("<p>").text("Forecast " + dayTwoForecast);
+    var dayThree =$("<p>").text("Forecast " + dayThreeForecast);
+    var dayFour =$("<p>").text("Forecast " + dayFourForecast);
+    var dayFive =$("<p>").text("Forecast " + dayFiveForecast);
+
+    forecastCard1.append(dayOne);
+    forecastCard2.append(dayTwo);
+    forecastCard3.append(dayThree);
+    forecastCard4.append(dayFour);
+    forecastCard5.append(dayFive);
 
   })
-}
+};
 
 //Add event listener for the search button to display the searched city
 
