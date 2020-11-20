@@ -11,20 +11,20 @@ var cities = [
     98101
 ];
 
-// Function for displaying movie data
+// Function for displaying zip code data
 function renderButtons() {
 
-   // Deleting the movies prior to adding new movies
-   // (this is necessary otherwise you will have repeat buttons)
+   // Ensuring no duplicate buttons
+  
    $("#buttons-view").empty();
 
    // Looping through the array of movies
    for (var i = 0; i < cities.length; i++) {
 
-     // Then dynamicaly generating buttons for each movie in the array
+     // Then dynamicaly generating buttons for each zip code in the array
      // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
      var a = $("<button>");
-     // Adding a class of movie-btn to our button
+     // Adding a class of city-btn to our button
      a.addClass("city-btn");
      // Adding a data-attribute
      a.attr("data-name", cities[i]);
@@ -35,16 +35,16 @@ function renderButtons() {
    }
  }
 
- // This function handles events where a movie button is clicked
+ // This function handles events where a zip code button is clicked
  $("#searchButton").on("click", function(event) {
    event.preventDefault();
    // This line grabs the input from the textbox
    var city = $(".form-control").val().trim();
 
-   // Adding movie from the textbox to our array
+   // Adding zip code from the textbox to our array
    cities.push(city);
 
-   // Calling renderButtons which handles the processing of our movie array
+   // Calling renderButtons which handles the processing of our zip code array
    renderButtons();
  });
 
@@ -107,7 +107,7 @@ function citySearch (){
            //Get lat and long coordinates
 
            var lat = response.coord.lat;
-           var long = response.coord.long;
+           var long = response.coord.lon;
 
            uvIndex(lat,long);
 
@@ -120,7 +120,7 @@ function citySearch (){
 
 function uvIndex (lat, long) {
 
-   var uvQueryURL = "http//api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=af365a15708e5fc672bcd55e78617a9f";
+   var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=af365a15708e5fc672bcd55e78617a9f";
 
    $.ajax({
 
