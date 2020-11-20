@@ -113,6 +113,25 @@ function citySearch (){
 
            uvIndex(lat,long);
 
+           function fiveDayForecast () {
+
+            var fiveDayURL ="http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + "&appid=af365a15708e5fc672bcd55e78617a9f";
+          
+            $.ajax({
+          
+              url: fiveDayURL,
+              method: "GET"
+            }).then(function(response){
+          
+              var forecastCards = $(".card");
+          
+              console.log(response);
+          
+            })
+          }
+
+          fiveDayForecast();
+
        })
 
        
@@ -147,6 +166,24 @@ function uvIndex (lat, long) {
   })
 }
 
+function fiveDayForecast () {
+
+  var fiveDayURL ="http://api.openweathermap.org/data/2.5/forecast?zip=" + zip + "&appid=af365a15708e5fc672bcd55e78617a9f";
+
+  $.ajax({
+
+    url: fiveDayURL,
+    method: "GET"
+  }).then(function(response){
+
+    var forecastCards = $(".card");
+
+    console.log(response);
+
+  })
+}
+
 //Add event listener for the search button to display the searched city
 
 var searchButton = $("#searchButton").on("click", citySearch);
+
