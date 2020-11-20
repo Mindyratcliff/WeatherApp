@@ -22,7 +22,7 @@ function renderButtons() {
    for (var i = 0; i < cities.length; i++) {
 
      // Then dynamicaly generating buttons for each zip code in the array
-     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+     
      var a = $("<button>");
      // Adding a class of city-btn to our button
      a.addClass("city-btn");
@@ -35,16 +35,16 @@ function renderButtons() {
    }
  }
 
- // This function handles events where a zip code button is clicked
+ // Add an event listener for when a predetermined zip code button is clicked
  $("#searchButton").on("click", function(event) {
    event.preventDefault();
    // This line grabs the input from the textbox
    var city = $(".form-control").val().trim();
 
-   // Adding zip code from the textbox to our array
+   // Adding zip code from the textbox to the array
    cities.push(city);
 
-   // Calling renderButtons which handles the processing of our zip code array
+   // Render the array
    renderButtons();
  });
 
@@ -109,6 +109,8 @@ function citySearch (){
            var lat = response.coord.lat;
            var long = response.coord.lon;
 
+           //Call the uvIndex function to display on page.
+
            uvIndex(lat,long);
 
        })
@@ -117,6 +119,8 @@ function citySearch (){
            
 
 };
+
+//A function to makes an ajax call to the API for uv Index with the lat and long coordinates from the citySearch function
 
 function uvIndex (lat, long) {
 
@@ -130,7 +134,11 @@ function uvIndex (lat, long) {
 
           var cityData = $("#searchedCity");
 
+          //Take the uv Index response
+
           var uvIndex = response.value;
+
+          //Add it to the div
 
           var pUV = $("<p>").text("UV Index: " + uvIndex);
           cityData.append(pUV);
@@ -138,5 +146,7 @@ function uvIndex (lat, long) {
 
   })
 }
+
+//Add event listener for the search button to display the searched city
 
 var searchButton = $("#searchButton").on("click", citySearch);
