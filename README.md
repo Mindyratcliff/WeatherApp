@@ -31,7 +31,7 @@ Or
 
 ## Credits
 
-The deployment was completed solo but the following websites proved useful to assist with development of JavaScript and Web APIs:
+The deployment was completed solo but the following websites proved useful to assist with development:
 
  Moment.js [Moment](https://momentjs.com)
 
@@ -39,7 +39,6 @@ The deployment was completed solo but the following websites proved useful to as
 
  jQuery [jQuery](https://jquery.com)
 
- Mozilla Developer Network Element [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 ## Contributing
 
