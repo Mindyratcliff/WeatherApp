@@ -108,7 +108,7 @@ function citySearch(zip) {
 
 function uvIndex(lat, long) {
   var uvQueryURL =
-    "http://api.openweathermap.org/data/2.5/uvi?lat=" +
+    "https://api.openweathermap.org/data/2.5/uvi?lat=" +
     lat +
     "&lon=" +
     long +
