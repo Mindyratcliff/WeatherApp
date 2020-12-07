@@ -149,7 +149,7 @@ function fiveDayForecast(lat, long) {
   }).then(function (response) {
     for (var i = 1; i < 6; i++) {
       var forecastCard = $("#card" + i);
-      var dayIcon = response.daily[i].weather.icon;
+      var fiveDayIcon = response.daily[i].weather[0].icon;
       var dayForecast = response.daily[i].weather[0].main;
       var dayTemp = response.daily[i].temp.day;
       //convert temp
@@ -157,11 +157,14 @@ function fiveDayForecast(lat, long) {
      // Calculating Fahrenheit temperature to the nearest integer
       var dayFahrenheit = Math.floor(dayCelsius * (9 / 5) + 32);
       var cTemp = $("<p>").text("Temperature: " + dayFahrenheit + " F");
+
+      var fiveDayIconURL = "http://openweathermap.org/img/w/" + fiveDayIcon + ".png";
+      var fiveDayIconDisplay = $("<img>").attr("src", fiveDayIconURL);
       var dayOfWeek = moment().add(i, "days").format("dddd");
       var dateText = $("<p>").text(dayOfWeek);
       var forecastText = $("<p>").text("Forecast " + dayForecast);
       forecastCard.empty();
-      forecastCard.append(icon);
+      forecastCard.append(fiveDayIconDisplay);
       forecastCard.append(dateText);
       forecastCard.append(cTemp);
       forecastCard.append(forecastText).addClass("card");
