@@ -63,6 +63,10 @@ function citySearch(zip) {
     //Empty the div
     cityData.empty();
 
+    var cityIcon = response.weather[0].icon;
+    var iconURL = "http://openweathermap.org/img/w/" + cityIcon + ".png";
+    var cityIconDisplay = $("#wicon").attr("src", iconURL);
+
     var cityName = response.name;
 
     var cityDisplay = $("<h3>").text(cityName);
@@ -145,6 +149,7 @@ function fiveDayForecast(lat, long) {
   }).then(function (response) {
     for (var i = 1; i < 6; i++) {
       var forecastCard = $("#card" + i);
+      var dayIcon = response.daily[i].weather.icon;
       var dayForecast = response.daily[i].weather[0].main;
       var dayTemp = response.daily[i].temp.day;
       //convert temp
@@ -156,6 +161,7 @@ function fiveDayForecast(lat, long) {
       var dateText = $("<p>").text(dayOfWeek);
       var forecastText = $("<p>").text("Forecast " + dayForecast);
       forecastCard.empty();
+      forecastCard.append(icon);
       forecastCard.append(dateText);
       forecastCard.append(cTemp);
       forecastCard.append(forecastText).addClass("card");
