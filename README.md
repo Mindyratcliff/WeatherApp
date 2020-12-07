@@ -1,4 +1,4 @@
-# DayPlanner
+# Weather Application
 
 When given a task to create a weather application to allow the user to search for weather forecasts based on zip code, the development of this application dynamically uses AJAX to access three separate APIs to gather weather data based on zip code then latitude and longitude. Users can select from a series of pre-set major cities in the United States or enter their own zip code to find local forecasts. 
 
@@ -17,9 +17,10 @@ When given a task to create a weather application to allow the user to search fo
 ## Usage
 
 
- ![Image of Weather App](https://github.com/Mindyratcliff/WeatherApp/blob/main/ScreenShot%20Weather%20App.jpeg)
+ ![Image of Weather App](https://github.com/Mindyratcliff/WeatherApp/blob/main/Columbus.jpg)
+ ![Image of Weather App](https://github.com/Mindyratcliff/WeatherApp/blob/main/SanFran.jpg)
 
- The application may be accessed here [CodeQuiz](https://mindyratcliff.github.io/WeatherApp/)
+ The application may be accessed here [Weather Application](https://mindyratcliff.github.io/WeatherApp/)
 
 ## Installation
 
